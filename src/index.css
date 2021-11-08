@@ -24,6 +24,18 @@ label,
 li,
 nav,
 p,
+strong,
 small,
 ul {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: none;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+body {
+	font-family: Arial, san-serif;
 }
