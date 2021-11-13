@@ -1,15 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
+import LeftSide from './LeftSide';
+import Main from './Main';
+import RightSide from './RightSide';
 
 const Home = () => {
     return (
         <Container>
-            <Section>
-                <h5>
-                    <a> Hairing in a hurrt?</a>
-                </h5>
-                <p>Find talanted pros in record time Upwork and keep buisness moving.</p>
-            </Section>
+            <Content>
+                <Section>
+                    <h5>
+                        <a> Hairing in a hurrt?</a>
+                    </h5>
+                    <p>Find talanted pros in record time Upwork and keep buisness moving.</p>
+                </Section>
+                <Layout>
+                    <LeftSide />
+                    <Main />
+                    <RightSide />
+                </Layout>
+            </Content>
         </Container>
     );
 }
@@ -51,6 +61,20 @@ const Section = styled.section`
         flex-direction: column;
         padding: 0 5px;
         margin-right: 0;
+    }
+`
+const Layout = styled.section`
+    display: grid;
+    grid-template-areas: 'leftside main rightside';
+    grid-template-columns: minmax(0, 5fr) minmax(0, 12fr) minmax(300px, 7fr);
+    column-gap: 25px;
+    row-gap: 25px;
+    grid-template-rows: auto;
+    margin: 25px 0;
+    @media(max-width:768px){
+        display: flex;
+        flex-direction: column;
+        padding: 0 5px;
     }
 `
 
