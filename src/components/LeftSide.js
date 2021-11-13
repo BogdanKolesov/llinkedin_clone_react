@@ -182,6 +182,16 @@ const CommunityCard = styled(ArtCard)`
             display: flex;
             align-items: center;
             justify-content: space-between;
+            img{
+                border: 2px solid transparent;
+                border-radius: 50%;
+                padding: 3px;
+            }
+            &:hover{
+                img{
+                border-color: rgba(0,0,0,0.8);
+            }
+            }
         }
         &:last-child{
             color: rgba(0,0,0,0.6);
