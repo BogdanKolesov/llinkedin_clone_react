@@ -15,6 +15,20 @@ const LeftSide = () => {
                         <AddPhotoText>Add a photo</AddPhotoText>
                     </a>
                 </UserInfo>
+                <Widget>
+                    <a>
+                        <div>
+                            <span>Connections</span>
+                            <span>Grow your network</span>
+                        </div>
+                        <img src='/assets/images/widget-icon.svg' alt='' />
+                    </a>
+                </Widget>
+                <Item>
+                    <span>
+                        <img src='/assets/images/item-icon.svg' alr='' />
+                    </span>
+                </Item>
             </ArtCard>
         </Container>
     );
@@ -71,10 +85,23 @@ const Link = styled.div`
     line-height: 1.5;
     color: rgba(0,0,0,0.9);
     font-weight: 600;
-    
 `
 
 const AddPhotoText = styled.div`
+    color: #0a66c2;
+    margin-top: 4px;
+    font-size: 12px;
+    line-height: 1.33;
+    font-weight: 700;
+    cursor: pointer;
+`
+
+const Widget = styled.div`
 
 `
+
+const Item = styled.a`
+
+`
+
 export default LeftSide;
