@@ -166,6 +166,10 @@ const NavList = styled.li`
         }
     }
     }
+    &:hover{
+        background-color: #ffffff;
+        border-radius: 8px;
+    }
     &:hover, 
     &:active{
         a{
