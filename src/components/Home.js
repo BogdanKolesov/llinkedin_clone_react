@@ -27,6 +27,7 @@ const Home = () => {
 const Container = styled.div`
     padding-top: 52px;
     max-width: 100%;
+    padding-bottom: 5%;
 `
 
 const Content = styled.div`

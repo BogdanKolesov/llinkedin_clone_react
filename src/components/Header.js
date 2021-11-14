@@ -77,6 +77,9 @@ const Content = styled.div`
     margin: 0 auto;
     min-height: 100%;
     max-width: 1128px;
+    @media(max-width: 768px){
+        padding: 5px 0;
+    }
 `
 
 const Logo = styled.span`
@@ -136,13 +139,16 @@ const NavListWrap = styled.ul`
     display: flex;
     flex-wrap: nowrap;
     list-style-type: none;
-
+    @media(max-width:768px){
+        background-color: #ffffff;
+    }
 `
 
 const NavList = styled.li`
     display: flex;
     align-items: center;
     cursor: pointer;
+    justify-content: center;
     a{
         display: flex;
         align-items: center;
@@ -167,7 +173,7 @@ const NavList = styled.li`
     }
     }
     &:hover{
-        background-color: #ffffff;
+        background-color: rgba(0,0,0,0.1);
         border-radius: 8px;
     }
     &:hover, 
