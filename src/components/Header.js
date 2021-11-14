@@ -171,7 +171,6 @@ const NavList = styled.li`
             min-width: 70px;
         }
     }
-    }
     &:hover{
         background-color: rgba(0,0,0,0.1);
         border-radius: 8px;
@@ -195,9 +194,7 @@ const NavList = styled.li`
             border-color: rgba(0,0,0,0.9);
         }    
     }
-    @media(max-width: 768px){
-        width: 20%;
-    }
+
 `
 
 const SignOut = styled.div`
