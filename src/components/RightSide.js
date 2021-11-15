@@ -31,7 +31,7 @@ const RightSide = () => {
                 </FeedList>
                 <Recomendations>
                     View all recomendations
-                    <img src='/assets/images/right-icon.svg' alr='Recomendations' />
+                    <img src='/assets/images/right-icon.svg' alt='Recomendations' />
                 </Recomendations>
             </FollowCard>
             <BannerCard>
