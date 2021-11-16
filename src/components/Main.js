@@ -66,6 +66,24 @@ const Main = () => {
                             </a>
                         </li>
                     </SocialCounts>
+                    <SocialActions>
+                        <button>
+                            <img src='/assets/images/liked.svg' alt='like' />
+                            <span>Like</span>
+                        </button>
+                        <button>
+                            <img src='/assets/images/comments.svg' alt='comments' />
+                            <span>Comments</span>
+                        </button>
+                        <button>
+                            <img src='/assets/images/share.svg' alt='share' />
+                            <span>Share</span>
+                        </button>
+                        <button>
+                            <img src='/assets/images/send.svg' alt='send' />
+                            <span>Send</span>
+                        </button>
+                    </SocialActions>
                 </Article>
             </div>
         </Container>
@@ -227,7 +245,59 @@ const SharedImg = styled.div`
         height: 100%;
     }
 `
-const SocialCounts = styled.div`
-
+const SocialCounts = styled.ul`
+    line-height: 1.3;
+    display: flex;
+    align-items: center;
+    overflow: auto;
+    margin: 0 16px;
+    padding: 8px 0;
+    border-bottom: 1px solid #e9e5df;
+    list-style: none;
+    li{
+        margin-right: 5px;
+        font-size: 12px;
+        button{
+            display: inline-flex;
+            justify-content: space-around;
+            align-items:center;
+            width: 100px;
+            height: 30px;
+            margin-right: 10px;
+            background: transparent;
+            border: none;
+            img{
+                width: 30%;
+            }
+        }
+    }
 `
+const SocialActions = styled.div`
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-right: 20px;
+    padding-left: 20px;
+    min-height: 40px;
+    padding-bottom: 5px;
+    button{
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: #0a66c2;
+        img{
+            width: 28px;
+            margin-right: 5px;
+        }
+        @media(min-width: 768px){
+            span{
+                margin-left: 4px;
+            }
+        }
+    }
+`
+
 export default Main;
