@@ -288,6 +288,11 @@ const SocialActions = styled.div`
         border: none;
         cursor: pointer;
         color: #0a66c2;
+        border-bottom: 2px solid transparent;
+        padding-bottom: 3px;
+        &:hover{
+                border-color: #0a66c2;
+            }
         img{
             width: 28px;
             margin-right: 5px;
