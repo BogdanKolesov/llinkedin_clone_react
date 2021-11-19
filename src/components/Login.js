@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
 import { connect } from 'react-redux'
+import { signInAPI } from '../redux/actions'
 
 const Login = () => {
     return (

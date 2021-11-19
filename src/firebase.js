@@ -1,4 +1,5 @@
 import firebase from 'firebase'
+//  "firebase" v"^8.10.0"
 
 const firebaseConfig = {
   apiKey: "AIzaSyDZCcASrIP5uBMS_cptgfQqb3WXzT3M42U",
