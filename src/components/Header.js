@@ -1,10 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { navData } from './data/navData'
 
 
 //
-const Header = () => {
+const Header = (props) => {
     return (
         <Container>
             <Content>
@@ -34,10 +35,12 @@ const Header = () => {
                             ))
                         }
                         <User>
-                            <a >
-                                <img src="/assets/images/user.svg" alt="user" />
-                                <span>Me</span>
-                                <img src="/assets/images/down-icon.svg" alt="down" />
+                            <a>
+                                {props.user && props.user.photoURL ? <img src={props.user.photoURL} alt='' /> : <img src="/assets/images/user.svg" alt="user" />}
+                                <span>
+                                    Me
+                                    <img src="/assets/images/down-icon.svg" alt="down" />
+                                </span>
                             </a>
                             <SignOut>
                                 <a>Sign Out</a>
@@ -65,6 +68,7 @@ const Container = styled.div`
     border-bottom: 1px solid rgba(0,0,0,0.08);
     left: 0;
     padding: 0 24px;
+    padding-top: 5px;
     position: fixed;
     top: 0;
     width: 100vw;
@@ -243,6 +247,13 @@ const Work = styled(User)`
 `
 
 
+const mapStateToProps = (state) => {
+    return {
+        user: state.userState.user
+    }
+}
 
+const mapDispatchToProps = (dispatch) => ({
+})
 
-export default Header;
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
