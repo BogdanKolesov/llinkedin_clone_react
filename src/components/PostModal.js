@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux'
 
-const PostModal = () => {
+const PostModal = (props) => {
     return (
         <Container>
             <Content>
@@ -11,6 +12,14 @@ const PostModal = () => {
                         <img src='/assets/images/close-icon.svg' alt='close' />
                     </button>
                 </Header>
+                <SharedContent>
+                    <UserInfo>
+                        {props.user && props.user.photoURL ? <img src={props.user.photoURL} alt='' /> : <img src="/assets/images/user.svg" alt="user" />}
+                        <span>
+                            {props.user ? props.user.displayName : ''}
+                        </span>
+                    </UserInfo>
+                </SharedContent>
             </Content>
         </Container>
     );
@@ -69,5 +78,19 @@ const Header = styled.div`
         }
     }
 `
+const SharedContent = styled.div`
 
-export default PostModal;
+`
+
+const UserInfo = styled.div`
+
+`
+
+
+const mapStateToProps = (state) => {
+    return {
+        user: state.userState.user
+    }
+}
+
+export default connect(mapStateToProps)(PostModal);
