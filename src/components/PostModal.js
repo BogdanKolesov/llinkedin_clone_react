@@ -20,6 +20,20 @@ const PostModal = (props) => {
                         </span>
                     </UserInfo>
                 </SharedContent>
+                <SharedCreation>
+                    <AttachAssets>
+                        <AssetButton>
+                            <img src='/assets/images/image-icon.svg' alt='' />
+                        </AssetButton>
+                        <AssetButton>
+                            <img src='/assets/images/video-icon.svg' alt='' />
+                        </AssetButton>
+                    </AttachAssets>
+                    <AssetButton >
+                        <img src='/assets/images/comments.svg' alt='' />
+                        Anyone
+                    </AssetButton>
+                </SharedCreation>
             </Content>
         </Container>
     );
@@ -79,13 +93,68 @@ const Header = styled.div`
     }
 `
 const SharedContent = styled.div`
-
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: auto;
+    vertical-align: baseline;
+    background: transparent;
+    padding: 8px 12px;
 `
 
 const UserInfo = styled.div`
-
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
+    svg, img {
+        width: 48px;
+        height: 48px;
+        background-clip: content-box;
+        border: 2px solid transparent;
+        border-radius: 50%;
+    }
+    span{
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 1.5;
+        margin-left: 5px;
+    }
 `
 
+const SharedCreation = styled.div`
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 24px 12px 16px;
+`
+
+const AssetButton = styled.button`
+    display: flex;
+    align-items: center;
+    height: 30px;
+    min-width: auto;
+    color: rgba(0,0,0,0.5);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-right: 5px;
+    &:hover{
+        border-color: rgba(0,0,0,0.5)
+    }
+    img{
+        width: 100%;
+        max-width: 30px;
+        margin-right: 5px; 
+    }
+`
+const AttachAssets = styled.div`
+    display: flex;
+    align-items: center;
+    padding-right: 8px;
+    ${AssetButton}{
+        width: 42px;
+    }
+`
 
 const mapStateToProps = (state) => {
     return {
