@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PostModal from './PostModal'
 
-const Main = () => {
+const Main = (props) => {
     return (
         <Container>
             <ShareBox>
