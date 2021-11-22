@@ -2,6 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux'
 
+
+//TODO: Text assets
+
 const PostModal = (props) => {
     return (
         <Container>
@@ -92,6 +95,7 @@ const Header = styled.div`
         }
     }
 `
+
 const SharedContent = styled.div`
     display: flex;
     flex-direction: column;
