@@ -4,15 +4,17 @@ import { connect } from 'react-redux'
 
 const PostModal = (props) => {
     const [editorText, setEditorText] = useState('')
+    const reset = (e) => {
+        setEditorText('')
+        props.handleClick(e)
+    }
 
-
-
-    return (
+    const content = (
         <Container>
             <Content>
                 <Header>
                     <h2>Create a post</h2>
-                    <button>
+                    <button onClick={(event) => reset(event)}>
                         <img src='/assets/images/close-icon.svg' alt='close' />
                     </button>
                 </Header>
@@ -54,6 +56,14 @@ const PostModal = (props) => {
                 </SharedCreation>
             </Content>
         </Container>
+    )
+    return (
+        <>
+            {
+                props.showModal === 'open' && content
+            }
+        </>
+
     );
 };
 
@@ -107,6 +117,9 @@ const Header = styled.div`
         align-items: center;
         &:hover{
             background-color: rgba(0,0,0,0.15);
+        }
+        img, svg{
+            pointer-events: none;
         }
     }
 `
