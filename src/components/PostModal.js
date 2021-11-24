@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux'
 
-
-//TODO: Text assets
-
 const PostModal = (props) => {
+    const [editorText, setEditorText] = useState('')
+
+
+
     return (
         <Container>
             <Content>
@@ -22,6 +23,15 @@ const PostModal = (props) => {
                             {props.user ? props.user.displayName : ''}
                         </span>
                     </UserInfo>
+                    <Editor>
+                        <textarea
+                            value={editorText}
+                            onChange={(e) => setEditorText(e.target.value)}
+                            placeholder='What do you want to talk about?'
+                            autoFocus={true}
+                        >
+                        </textarea>
+                    </Editor>
                 </SharedContent>
                 <SharedCreation>
                     <AttachAssets>
@@ -192,6 +202,25 @@ const PostButton = styled.button`
         cursor: pointer;
         background: #004182;
     }
+`
+const Editor = styled.div`
+    padding: 12px 24px;
+    textarea{
+        width: 100%;
+        min-height: 100px;
+        resize: none;
+        border: 1px solid rgba(0,0,0,0.15);
+        outline: none;
+        &:focus{
+            border: 1px solid #0a66c2;
+        }
+    }
+    input{
+            width: 100%;
+            height: 25px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
 
 `
 export default connect(mapStateToProps)(PostModal);
