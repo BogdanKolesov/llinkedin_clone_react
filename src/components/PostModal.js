@@ -32,10 +32,15 @@ const PostModal = (props) => {
                             <img src='/assets/images/video-icon.svg' alt='' />
                         </AssetButton>
                     </AttachAssets>
-                    <AssetButton >
-                        <img src='/assets/images/comments.svg' alt='' />
-                        Anyone
-                    </AssetButton>
+                    <ShareComment>
+                        <AssetButton >
+                            <img src='/assets/images/comments.svg' alt='' />
+                            Anyone
+                        </AssetButton>
+                    </ShareComment>
+                    <PostButton>
+                        Post
+                    </PostButton>
                 </SharedCreation>
             </Content>
         </Container>
@@ -166,4 +171,27 @@ const mapStateToProps = (state) => {
     }
 }
 
+const ShareComment = styled.div`
+    padding-left: 8px;
+    margin-right: auto;
+    border-left: 1px solid rgba(0,0,0,0.15);
+    ${AssetButton}{
+        svg{
+            margin-right: 5px;
+        }
+    }
+`
+const PostButton = styled.button`
+    min-width: 60px;
+    border-radius: 20px;
+    padding-left: 16px;
+    padding-right: 16px;
+    background: #0a66c2;
+    color: #ffffff;
+    &:hover{
+        cursor: pointer;
+        background: #004182;
+    }
+
+`
 export default connect(mapStateToProps)(PostModal);
