@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux'
+import ReactPlayer from 'react-player';
 
 const PostModal = (props) => {
     const [editorText, setEditorText] = useState('')
     const [shareImage, setShareImage] = useState('')
+    const [videoLink, setVideoLink] = useState('')
 
     const handleChange = (e) => {
         const image = e.target.files[0]
@@ -45,7 +47,7 @@ const PostModal = (props) => {
                         <UploadImage>
                             <input
                                 type='file'
-                                accept='image/gif, image/jpeg/, image/png'
+                                accept='image/gif, image/jpg, image/jpeg, image/png'
                                 name='image'
                                 id='file'
                                 style={{ display: 'none' }}
@@ -55,6 +57,16 @@ const PostModal = (props) => {
                                 htmlFor='file'>
                                 Select image to share
                             </label></p>
+                            {shareImage && <img src={URL.createObjectURL(shareImage)} alt='shared_image' />}
+                            <>
+                                <input
+                                    type='text'
+                                    placeholder='please input a video link'
+                                    value={videoLink}
+                                    onChange={(e) => setVideoLink(e.target.value)}
+                                />
+                                {videoLink && <ReactPlayer width={'100%'} url={videoLink} />}
+                            </>
                         </UploadImage>
                     </Editor>
                 </SharedContent>
@@ -260,7 +272,15 @@ const Editor = styled.div`
         }
 `
 const UploadImage = styled.div`
-
+    text-align: center;
+    img{
+        width: 100%;
+    }
+    p{
+        label{
+            cursor: pointer;
+        }
+    }
 `
 
 export default connect(mapStateToProps)(PostModal);
