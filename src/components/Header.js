@@ -202,7 +202,6 @@ const NavList = styled.li`
 
 const SignOut = styled.div`
     position: absolute;
-    top: 45px;
     background: #ffffff;
     border-radius: 0 0 5px 5px;
     width: 100px;
@@ -212,6 +211,9 @@ const SignOut = styled.div`
     text-align: center;
     display: none;
     cursor: pointer;
+    @media(max-width: 768px){
+        top: 45px;
+    }
 `
 
 const User = styled(NavList)`

@@ -7,6 +7,7 @@ const PostModal = (props) => {
     const [editorText, setEditorText] = useState('')
     const [shareImage, setShareImage] = useState('')
     const [videoLink, setVideoLink] = useState('')
+    const [assetArea, setAssetArea] = useState('')
 
     const handleChange = (e) => {
         const image = e.target.files[0]
@@ -16,8 +17,18 @@ const PostModal = (props) => {
         }
         setShareImage(image)
     }
+
+    const switchAssetArea = (area) => {
+        setShareImage('')
+        setVideoLink('')
+        setAssetArea(area)
+    }
+
     const reset = (e) => {
         setEditorText('')
+        setShareImage('')
+        setVideoLink('')
+        setAssetArea('')
         props.handleClick(e)
     }
 
@@ -44,21 +55,26 @@ const PostModal = (props) => {
                             placeholder='What do you want to talk about?'
                             autoFocus={true}
                         />
-                        <UploadImage>
-                            <input
-                                type='file'
-                                accept='image/gif, image/jpg, image/jpeg, image/png'
-                                name='image'
-                                id='file'
-                                style={{ display: 'none' }}
-                                onChange={handleChange}
-                            />
-                            <p><label
-                                htmlFor='file'>
-                                Select image to share
-                            </label></p>
-                            {shareImage && <img src={URL.createObjectURL(shareImage)} alt='shared_image' />}
-                            <>
+                        {assetArea === 'image' ?
+                            (<UploadImage>
+                                <input
+                                    type='file'
+                                    accept='image/gif, image/jpg, image/jpeg, image/png'
+                                    name='image'
+                                    id='file'
+                                    style={{ display: 'none' }}
+                                    onChange={handleChange}
+                                />
+                                <p><label
+                                    htmlFor='file'>
+                                    Select image to share
+                                </label></p>
+                                {shareImage && <img src={URL.createObjectURL(shareImage)} alt='shared_image' />}
+                            </UploadImage>
+                            )
+                            :
+                            assetArea === 'media' &&
+                            (<>
                                 <input
                                     type='text'
                                     placeholder='please input a video link'
@@ -66,16 +82,16 @@ const PostModal = (props) => {
                                     onChange={(e) => setVideoLink(e.target.value)}
                                 />
                                 {videoLink && <ReactPlayer width={'100%'} url={videoLink} />}
-                            </>
-                        </UploadImage>
+                            </>)
+                        }
                     </Editor>
                 </SharedContent>
                 <SharedCreation>
                     <AttachAssets>
-                        <AssetButton>
+                        <AssetButton onClick={() => switchAssetArea('image')}>
                             <img src='/assets/images/image-icon.svg' alt='' />
                         </AssetButton>
-                        <AssetButton>
+                        <AssetButton onClick={() => switchAssetArea('media')}>
                             <img src='/assets/images/video-icon.svg' alt='' />
                         </AssetButton>
                     </AttachAssets>
