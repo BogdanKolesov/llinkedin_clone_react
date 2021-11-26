@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux'
 import ReactPlayer from 'react-player';
-
+//TODO!: add a post
 const PostModal = (props) => {
     const [editorText, setEditorText] = useState('')
     const [shareImage, setShareImage] = useState('')
