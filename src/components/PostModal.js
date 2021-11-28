@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react'
+import styled from 'styled-components'
 import { connect } from 'react-redux'
-import ReactPlayer from 'react-player';
-//TODO!: add a post
+import ReactPlayer from 'react-player'
+import firebase from 'firebase'
+import { postArticleAPI } from '../redux/actions'
+
 const PostModal = (props) => {
     const [editorText, setEditorText] = useState('')
     const [shareImage, setShareImage] = useState('')
@@ -22,6 +24,21 @@ const PostModal = (props) => {
         setShareImage('')
         setVideoLink('')
         setAssetArea(area)
+    }
+
+    const postArticle = (e) => {
+        e.preventDefault()
+        if (e.target !== e.currentTarget) {
+            return
+        }
+
+        const payload = {
+            image: shareImage,
+            video: videoLink,
+            user: props.user,
+            description: editorText,
+            timestamp: firebase.firestore.Timestamp.now()
+        }
     }
 
     const reset = (e) => {
@@ -45,7 +62,7 @@ const PostModal = (props) => {
                     <UserInfo>
                         {props.user && props.user.photoURL ? <img src={props.user.photoURL} alt='' /> : <img src="/assets/images/user.svg" alt="user" />}
                         <span>
-                            {props.user ? props.user.displayName : ''}
+                            {props.user ? props.user.displayName : 'User'}
                         </span>
                     </UserInfo>
                     <Editor>
