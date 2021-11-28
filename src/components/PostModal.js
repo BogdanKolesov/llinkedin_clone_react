@@ -31,7 +31,6 @@ const PostModal = (props) => {
         if (e.target !== e.currentTarget) {
             return
         }
-
         const payload = {
             image: shareImage,
             video: videoLink,
@@ -39,6 +38,8 @@ const PostModal = (props) => {
             description: editorText,
             timestamp: firebase.firestore.Timestamp.now()
         }
+        props.postArticle(payload)
+        reset(e)
     }
 
     const reset = (e) => {
@@ -118,7 +119,10 @@ const PostModal = (props) => {
                             Anyone
                         </AssetButton>
                     </ShareComment>
-                    <PostButton disabled={!editorText ? true : false}>
+                    <PostButton
+                        disabled={!editorText ? true : false}
+                        onClick={(e) => postArticle(e)}
+                    >
                         Post
                     </PostButton>
                 </SharedCreation>
@@ -256,13 +260,6 @@ const AttachAssets = styled.div`
         width: 42px;
     }
 `
-
-const mapStateToProps = (state) => {
-    return {
-        user: state.userState.user
-    }
-}
-
 const ShareComment = styled.div`
     padding-left: 8px;
     margin-right: auto;
@@ -316,4 +313,14 @@ const UploadImage = styled.div`
     }
 `
 
-export default connect(mapStateToProps)(PostModal);
+const mapStateToProps = (state) => {
+    return {
+        user: state.userState.user
+    }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+    postArticle: (payload) => dispatch(postArticleAPI(payload))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostModal);
