@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
+import styled from 'styled-components'
 import PostModal from './PostModal'
+import { getArticlesAPI } from '../redux/actions'
 
 const Main = (props) => {
     const [showModal, setShowModal] = useState('close')
+
+    useEffect(() => {
+        props.getArticles()
+    }, [])
+
     const handleClick = (e) => {
         e.preventDefault()
         if (e.target !== e.currentTarget) {
@@ -24,10 +31,15 @@ const Main = (props) => {
     return (
         <Container>
             <ShareBox>
-                Share
                 <div>
-                    <img src='/assets/images/user.svg' alt='User' />
-                    <button onClick={handleClick}>Start a post</button>
+                    {props.user && props.user.photoURL ?
+                        <img src={props.user.photoURL} alt='User' />
+                        : <img src='/assets/images/user.svg' alt='User' />
+                    }
+                    <button
+                        onClick={handleClick}
+                        disabled={props.loading ? true : false}
+                    >Start a post</button>
                 </div>
                 <div>
                     <button>
@@ -48,7 +60,10 @@ const Main = (props) => {
                     </button>
                 </div>
             </ShareBox>
-            <div>
+            <Content>
+                {
+                    props.loading && <img src={'./assets/images/spinner.svg'} alt='loading...' />
+                }
                 <Article>
                     <SharedActor>
                         <a>
@@ -104,7 +119,7 @@ const Main = (props) => {
                         </button>
                     </SocialActions>
                 </Article>
-            </div>
+            </Content>
             <PostModal showModal={showModal} handleClick={handleClick} />
         </Container>
     );
@@ -325,4 +340,22 @@ const SocialActions = styled.div`
     }
 `
 
-export default Main;
+const Content = styled.div`
+    text-align: center;
+    & > img{
+        width: 30px;
+    }
+`
+
+const mapStateToProps = (state) => {
+    return {
+        loading: state.articleState.loading,
+        user: state.userState.user
+    }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+    getArticles: () => dispatch(getArticlesAPI())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
