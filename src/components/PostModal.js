@@ -121,7 +121,7 @@ const PostModal = (props) => {
                     </ShareComment>
                     <PostButton
                         disabled={!editorText ? true : false}
-                        onClick={(e) => postArticle(e)}
+                        onClick={(event) => postArticle(event)}
                     >
                         Post
                     </PostButton>

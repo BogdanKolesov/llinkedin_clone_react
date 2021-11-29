@@ -55,7 +55,7 @@ export function postArticleAPI(payload) {
                 (error) => console.log(error.code),
                 async () => {
                     const downloadURL = await upload.snapshot.ref.getDownloadURL()
-                    db.collection('articles').add({
+                    db.collection("articles").add({
                         actor: {
                             description: payload.user.email,
                             title: payload.user.displayName,
@@ -67,11 +67,21 @@ export function postArticleAPI(payload) {
                         comments: 0,
                         desctiprion: payload.description
                     })
-                        .then(() => {
-                            console.log('Done!')
-                        })
                 }
             )
+        } else if (payload.video) {
+            db.collection('articles').add({
+                actor: {
+                    description: payload.user.email,
+                    title: payload.user.displayName,
+                    date: payload.timestamp,
+                    image: payload.user.photoURL
+                },
+                video: payload.video,
+                sharedImg: '',
+                comments: 0,
+                desctiprion: payload.description
+            })
         }
     }
 }
