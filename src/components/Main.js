@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import PostModal from './PostModal'
 import { getArticlesAPI } from '../redux/actions'
 
+//TODO: Add postst to desc
+
 const Main = (props) => {
     const [showModal, setShowModal] = useState('close')
 
