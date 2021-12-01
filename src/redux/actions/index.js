@@ -104,10 +104,12 @@ export function postArticleAPI(payload) {
 export function getArticlesAPI() {
     return (dispatch) => {
         let payload
+
         db.collection('articles')
             .orderBy('actor.date', 'description')
             .onSnapshot((snapshot) => {
                 payload = snapshot.docs.map((doc) => doc.data())
+                dispatch(getArticles(payload))
             })
     }
 }
