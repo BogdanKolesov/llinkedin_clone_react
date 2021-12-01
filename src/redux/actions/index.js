@@ -52,7 +52,6 @@ export function signOutAPI() {
 export function postArticleAPI(payload) {
     return (dispatch) => {
         dispatch(setLoading(true))
-
         if (payload.image !== '') {
             const upload = storage
                 .ref(`images/${payload.image.name}`)
@@ -105,7 +104,7 @@ export function getArticlesAPI() {
     return (dispatch) => {
         let payload
 
-        db.collection('articles')
+        db.collection("articles")
             .orderBy('actor.date', 'description')
             .onSnapshot((snapshot) => {
                 payload = snapshot.docs.map((doc) => doc.data())

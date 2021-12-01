@@ -1,8 +1,8 @@
 import { SET_LOADING_STATUS, GET_ARTICLES } from "../actions/actionType"
 
 export const initialState = {
-    articles: [],
-    loading: false
+    loading: false,
+    articles: []
 }
 
 const articleReducer = (state = initialState, action) => {
