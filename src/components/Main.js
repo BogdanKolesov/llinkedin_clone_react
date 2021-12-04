@@ -10,7 +10,7 @@ const Main = (props) => {
 
     useEffect(() => {
         props.getArticles()
-    }, [])
+    })
 
     const handleClick = (e) => {
         e.preventDefault()
