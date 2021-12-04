@@ -1,11 +1,11 @@
 import { SET_LOADING_STATUS, GET_ARTICLES } from "../actions/actionType"
 
-export const initialState = {
+const INITIAL_STATE = {
     loading: false,
     articles: []
 }
 
-const articleReducer = (state = initialState, action) => {
+const articleReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case GET_ARTICLES:
             return {
